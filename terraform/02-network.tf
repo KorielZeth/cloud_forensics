@@ -132,7 +132,7 @@ resource "azurerm_lb_nat_rule" "ForLab-lb-nat-rdp" {
 resource "azurerm_lb_nat_rule" "ForLab-lb-nat-rdp2" {
   resource_group_name            = data.azurerm_resource_group.ForLab-rg.name
   loadbalancer_id                = azurerm_lb.ForLab-lb.id
-  name                           = "RDPAccess"
+  name                           = "RDPAccess2"
   protocol                       = "Tcp"
   frontend_port                  = 3390
   backend_port                   = 3389
@@ -142,7 +142,7 @@ resource "azurerm_lb_nat_rule" "ForLab-lb-nat-rdp2" {
 resource "azurerm_lb_nat_rule" "ForLab-lb-nat-ssh2" {
   resource_group_name            = data.azurerm_resource_group.ForLab-rg.name
   loadbalancer_id                = azurerm_lb.ForLab-lb.id
-  name                           = "SSHAccess"
+  name                           = "SSHAccess2"
   protocol                       = "Tcp"
   frontend_port                  = 2222
   backend_port                   = 22
