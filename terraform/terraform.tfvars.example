@@ -1,0 +1,21 @@
+# Terraform variables
+# See 'variables.tf' for definitions
+
+# Required
+resource-group       = "ForLab-rg"
+ip-whitelist         = ["1.2.3.4/32", "8.8.8.0/24"]
+
+# Optional (defaults are shown)
+timezone             = "W. Europe Standard Time"
+domain-name-label    = "forlab"
+domain-dns-name      = "For.lab"
+windows-user         = "labadmin"
+linux-user           = "labadmin"
+attackbox-hostname     = "attackbox"
+wazuh-hostname     = "wazuh"
+dc-hostname          = "dc"
+win10-hostname       = "win10"
+win10-size           = "Standard_B2ms"
+dc-size              = "Standard_B2ms"
+wazuh-size         = "Standard_B4ms"
+attackbox-size         = "Standard_B2ms"

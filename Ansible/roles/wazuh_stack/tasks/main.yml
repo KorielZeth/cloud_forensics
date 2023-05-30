@@ -1,0 +1,17 @@
+#Tasks to be executed on the Wazuh singlestack server
+
+- name: Add basic dependencies
+  apt:
+    name:
+      - apt-transport-https
+      - gnupg2
+      - lsb-release 
+      - software-properties-common
+      - openssh-server
+      - curl
+    state: present
+
+
+- name: Execute Wazuh installer
+  ansible.builtin.script: wazuh-install.sh -a
+

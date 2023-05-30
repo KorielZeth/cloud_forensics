@@ -1,0 +1,6 @@
+- name: Install utilities 
+  win_chocolatey:
+    name:
+    - bginfo
+    state: present
+    ignore_checksums: true

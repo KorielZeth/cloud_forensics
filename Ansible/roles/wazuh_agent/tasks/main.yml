@@ -1,0 +1,2 @@
+- name : Launch the Wazuh Agent installer
+  ansible.builtin.script: wazuh-agent-4.4.2-1.msi /q WAZUH_MANAGER="10.99.10.50"

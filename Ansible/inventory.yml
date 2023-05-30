@@ -1,0 +1,19 @@
+---
+windows:
+  children:
+    dc:
+      hosts:
+        10.99.10.10:
+    win10:
+      hosts:
+        10.99.10.11:
+
+linux:
+  children:
+    wazuh_stack:
+      hosts:
+        10.99.10.50:
+
+wazuh:
+  children:
+    windows:
