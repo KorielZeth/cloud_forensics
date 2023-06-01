@@ -34,3 +34,11 @@ Au niveau connectivité; tout se fait via l'IP publique :
 *   La machine d'attaque est accessible via SSH sur le port 22
 *   La machine hébergeant le stack Wazuh est quand à elle disponible en SSH sur le port 2222
 
+Malgré toutes les précautions prises, il se peut que l'installation du lab se finisse avec un échec sur une des tâches Ansible lambda, auquel cas les variables relatives au lab mentionnées plus haut ne seront pas affichés proprement : pas de panique, celles-ci sont visibles au tout début de l'output Terraform après la validation, sous la forme ci-contre : 
+
+```
+random_string.windowspass: Creating...
+random_string.windowspass: Creation complete after 0s [id=exemple]
+random_string.linuxpass: Creating...
+random_string.linuxpass: Creation complete after 0s [id=exemple]
+```

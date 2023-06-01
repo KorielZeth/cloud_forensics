@@ -1,6 +1,8 @@
+# Note: Chocolatey packages should be minimized to avoid hitting the rate limit (only 1 outbound IP is used)
 - name: Install utilities 
   win_chocolatey:
     name:
+    - GoogleChrome
     - bginfo
     state: present
     ignore_checksums: true
