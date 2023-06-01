@@ -6,10 +6,6 @@
         name: domain
       when: "'dc' in group_names"
 
-# Run common tasks on all Windows machines in parallel
-- hosts: windows
-  roles:
-    - common
 
 # Domain-join clients and run post-domain configuration in parallel
 - hosts: windows
