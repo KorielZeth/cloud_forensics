@@ -1,18 +1,34 @@
 # Cloud Forensics mini-lab
 
-Spin on chvancooten's CloudLabsAD (https://github.com/chvancooten/CloudLabsAD/) but with a Wazuh single stack instead of an Elastic one.
+This lab is (so far) a spin on chvancooten's CloudLabsAD (https://github.com/chvancooten/CloudLabsAD/) but with a Wazuh single stack instead of an Elastic one. I aim to iterate upon it by adding components to create a fully-fledged SIEM stack.
 
 ## Install instructions
 
-To paraphrase M. Van Cooten's original README
+Assuming that all commands are executed via the user's Azure Cloud Shell :
 
-    Clone the repo to your Azure cloud shell.
-    Copy `terraform.tfvars.example` to `terraform.tfvars` in the Terraform directory, and configure the variables appropriately.
-    In the same directory, run `terraform init`
-    When you're ready to deploy, run `terraform apply` (or `terraform apply --auto-approve` to skip the approval check).
+*   Create, within your Azure portal, a resource group in a region that is not yet used by other resources. Otherwise, the default subscription cap will be reached and you'll get an error message
+*   Open your Cloud Shell, and clone this repository
+*   Enter its `terraform` folder, and modify the `terraform.tfvars.example` file. The variables to modify are the resource group name, the IP whitelist (add the public IP of whatever subnet you're in), the domain name label, and the domain DNS name. Pay extra attention to this step, as any mis-input will cause the failure of the rest of the procedure
+*   Once all of those have been properly modified, rename or copy this file, giving it the name `terraform.tfvars`
+*   Launch (still within the `terraform` folder) the `terraform init` command
+*   Once the terraform backend is properly initialized, launch the `terraform apply` command
 
-    Once done with the lab, run `terraform destroy`
+Once the procedure is over, the various variables relevant to the lab's user will be displayed in the output (public IP of the lab, and Linux/Windows credentials). At the moment, the Wazuh credentials are not included within the output, so you must scroll sliiightly upwards in your Cloud Shell to get them (the relevant Ansible task is one of the last ones).
 
+NAT-wise, everything is done via the public IP :
+*   The Domain Controller is accessible via RDP on port 3390
+*   The Windows client is accessible via RDP too, on port 3389
+*   The attacker machine is accessible via SSH on port 22
+*   And last but not least, the dedicated Wazuh stack machine is accessible via SSH on port 2222
+
+In the event of an unforeseen Ansible task failure, the final Terraform output containing the aforementioned lab variables may not be displayed. Worry not, those are available at the very beginning of our command outputs, right after the initial validation, and will look like this :
+
+```
+random_string.windowspass: Creating...
+random_string.windowspass: Creation complete after 0s [id=exemple]
+random_string.linuxpass: Creating...
+random_string.linuxpass: Creation complete after 0s [id=exemple]
+```
 
 ## Marche à suivre
 

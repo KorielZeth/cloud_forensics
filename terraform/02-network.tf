@@ -105,7 +105,7 @@ resource "azurerm_lb_nat_rule" "ForLab-lb-nat-http" {
   name                           = "HTTPAccess"
   protocol                       = "Tcp"
   frontend_port                  = 80
-  backend_port                   = 80
+  backend_port                   = 443
   frontend_ip_configuration_name = "ForLab-lb-ip-public"
 }
 
