@@ -14,4 +14,3 @@
 
 - name: Execute Wazuh installer
   ansible.builtin.script: wazuh-install.sh -a
-

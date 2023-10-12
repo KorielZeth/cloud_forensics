@@ -1,0 +1,29 @@
+- name: Install GPG Key
+  ansible.builtin.shell: curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | gpg --no-default-keyring --keyring gnupg-ring:/usr/share/keyrings/wazuh.gpg --import && chmod 644 /usr/share/keyrings/wazuh.gpg
+
+- name: Install Repo
+  ansible.builtin.shell: echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.x/apt/ stable main" | tee -a /etc/apt/sources.list.d/wazuh.list
+
+
+- name: Update repositories cache and install "Wazuh Indexer" package
+  ansible.builtin.apt:
+    name: wazuh-indexer
+    update_cache: yes
+
+- name: Install the SOCFortress version of the cert script
+  ansible.builtin.command: wget https://raw.githubusercontent.com/socfortress/Wazuh-Rules/main/wazuh-certs-tool.sh -q -O /tmp/wazuh-certs-tool.sh
+
+- name: Install the SOCFortress version of the config yml file
+  ansible.builtin.command: wget https://raw.githubusercontent.com/socfortress/Wazuh-Rules/main/config.yml -q -O /tmp/config.yml
+
+- name: Switch the hostname to our own in the config file
+  ansible.builtin.lineinfile:
+    path: /tmp/config.yml
+    regexp: '^SELINUX='
+    line: SELINUX=enforcing
+
+- name: Switch the IP to our own in the config file
+  ansible.builtin.lineinfile:
+    path: /tmp/config.yml
+    regexp: '^SELINUX='
+    line: SELINUX=enforcing
