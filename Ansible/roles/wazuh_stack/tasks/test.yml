@@ -27,3 +27,7 @@
     path: /tmp/config.yml
     regexp: '^SELINUX='
     line: SELINUX=enforcing
+
+- name: Execute Wazuh installer
+  ansible.builtin.script: /tmp/wazuh-certs-tool.sh -A
+
