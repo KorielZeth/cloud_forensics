@@ -31,3 +31,8 @@
 - name: Execute Wazuh installer
   ansible.builtin.script: /tmp/wazuh-certs-tool.sh -A
 
+- name: Get the CN of the hostname.pem file
+  ansible.builtin.shell: openssl x509 -in indexer.adsoclab.com -text > CN.txt
+
+- name: Declare a NODE_NAME value
+  ansible.builtin.shell: NODE_NAME=indexer.adsoclab.com

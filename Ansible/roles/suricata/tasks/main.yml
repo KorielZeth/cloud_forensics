@@ -1,0 +1,15 @@
+- name: Add nginx stable repository from PPA and install its signing key on Ubuntu target
+  ansible.builtin.apt_repository:
+    repo: ppa:oisf/suricata-stable
+
+- name: Update repositories cache and install "Suricata" package
+  ansible.builtin.apt:
+    name: suricata
+    update_cache: yes
+
+- name: Enable the service so it starts at boot
+  ansible.builtin.command: sudo systemctl enable suricata.service
+
+- name: Stop the service to perform configuration cjanhes
+  ansible.builtin.command: sudo systemctl stop suricata.service
+
