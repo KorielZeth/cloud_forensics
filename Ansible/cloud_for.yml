@@ -23,6 +23,10 @@
   roles:
     - wazuh_stack
 
+# Run the agent on the Windows Hosts
+- hosts: windows
+  roles:
+    - common
 
 # Run the agent on the Windows Hosts
 - hosts: windows

@@ -4,5 +4,6 @@
     name:
     - GoogleChrome
     - bginfo
+    - python
     state: present
     ignore_checksums: true
