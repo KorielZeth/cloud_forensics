@@ -1,4 +1,10 @@
 ---
+
+# Install python on the windows hosts
+- hosts: windows
+  roles:
+    - common
+
 # Configure the DC to prepare the domain
 - hosts: all
   tasks:
@@ -23,7 +29,7 @@
   roles:
     - wazuh_stack
 
-# Run the agent on the Windows Hosts
+# Install python on the windows hosts
 - hosts: windows
   roles:
     - common
