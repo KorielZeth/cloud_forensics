@@ -75,6 +75,19 @@ variable "win10-size" {
   default = "Standard_B4ms"
 }
 
+variable "suricata-hostname" {
+  type = string
+  description = "The hostname of the Suricata VM."
+  default = "suricata"
+}
+
+variable "suricata-size" {
+  type = string
+  description = "The machine size of the Suricata VM."
+  default = "Standard_B4ms"
+}
+
+
 variable "windows-user" {
   type        = string
   description = "The local administrative username for Windows machines. Password will be generated."

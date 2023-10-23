@@ -14,6 +14,8 @@ linux:
       hosts:
         10.99.10.50:
 
-wazuh:
+suricata:
   children:
-    windows:
+    suricata:
+      hosts:
+        10.99.10.90
