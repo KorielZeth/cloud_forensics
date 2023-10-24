@@ -37,7 +37,7 @@ resource "azurerm_linux_virtual_machine" "ForLab-vm-suricata" {
   admin_username      = var.linux-user
   admin_password      = random_string.linuxpass.result
   network_interface_ids = [
-    azurerm_network_interface.ForLab-vm-wazuh-nic.id,
+    azurerm_network_interface.ForLab-vm-suricata-nic.id,
   ]
 
   os_disk {
