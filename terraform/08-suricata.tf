@@ -17,13 +17,7 @@ resource "azurerm_network_interface" "ForLab-vm-suricata-nic" {
 resource "azurerm_network_interface_nat_rule_association" "ForLab-vm-suricata-nic-nat" {
   network_interface_id  = azurerm_network_interface.ForLab-vm-suricata-nic.id
   ip_configuration_name = "ForLab-vm-suricata-nic-config"
-  nat_rule_id           = azurerm_lb_nat_rule.ForLab-lb-nat-ssh2.id
-}
-
-resource "azurerm_network_interface_nat_rule_association" "ForLab-vm-suricata-nic-nat2" {
-  network_interface_id  = azurerm_network_interface.ForLab-vm-suricata-nic.id
-  ip_configuration_name = "ForLab-vm-suricata-nic-config"
-  nat_rule_id           = azurerm_lb_nat_rule.ForLab-lb-nat-http.id
+  nat_rule_id           = azurerm_lb_nat_rule.ForLab-lb-nat-ssh3.id
 }
 
 # Machine virtuelle

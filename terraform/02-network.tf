@@ -149,6 +149,16 @@ resource "azurerm_lb_nat_rule" "ForLab-lb-nat-ssh2" {
   frontend_ip_configuration_name = "ForLab-lb-ip-public"
 }
 
+resource "azurerm_lb_nat_rule" "ForLab-lb-nat-ssh3" {
+  resource_group_name            = data.azurerm_resource_group.ForLab-rg.name
+  loadbalancer_id                = azurerm_lb.ForLab-lb.id
+  name                           = "SSHAccess3"
+  protocol                       = "Tcp"
+  frontend_port                  = 2223
+  backend_port                   = 22
+  frontend_ip_configuration_name = "ForLab-lb-ip-public"
+}
+
 
 # Création d'une gateway NAT pour le traffic sortant vers internet
 resource "azurerm_nat_gateway" "ForLab-nat-gateway" {
