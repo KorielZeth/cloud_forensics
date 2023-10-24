@@ -85,6 +85,6 @@ output "win10-hostname"{
 
 output "suricata-hostname"{
     value = var.suricata-hostname
-    description = Le hostname de la Sonde Suricata
+    description = "Le hostname de la Sonde Suricata"
 
 }
