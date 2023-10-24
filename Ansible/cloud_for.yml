@@ -1,20 +1,23 @@
 ---
 
+- hosts: all
+  strategy: free
+  tasks:
+    - include_role:
+        name: domain
+      when: "'dc' in group_names"
+    - include_role:
+        name: wazuh_stack
+      when: "'wazuh_stack' in group_names"
+
 # Install python on the windows hosts
 - hosts: windows
   roles:
     - common
 
-# Configure the DC to prepare the domain
-- hosts: all
-  tasks:
-    - include_role:
-        name: domain
-      when: "'dc' in group_names"
-
-
 # Domain-join clients and run post-domain configuration in parallel
 - hosts: windows
+  strategy: free
   tasks:
     - include_role: 
         name: win10
@@ -23,16 +26,6 @@
         name: dc
       when: "'dc' in group_names"
 
-
-# Install Wazuh
-- hosts : linux
-  roles:
-    - wazuh_stack
-
-# Install python on the windows hosts
-- hosts: windows
-  roles:
-    - common
 
 # Run the agent on the Windows Hosts
 - hosts: windows
