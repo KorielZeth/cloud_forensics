@@ -1,7 +1,7 @@
 ---
 
 - hosts: all
-  strategy: free
+#  strategy: free
   tasks:
     - include_role:
         name: domain
@@ -10,10 +10,11 @@
         name: wazuh_stack
       when: "'wazuh_stack' in group_names"
 
-# Install python on the windows hosts
 - hosts: windows
-  roles:
-    - common
+  tasks:
+    - include_role:
+        name: common
+      when: "'win10' in group_names"
 
 # Domain-join clients and run post-domain configuration in parallel
 - hosts: windows
