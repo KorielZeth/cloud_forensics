@@ -1,4 +1,5 @@
 ---
+
 windows:
   children:
     dc:
@@ -14,8 +15,9 @@ linux:
       hosts:
         10.99.10.50:
 
-suricata:
-  children:
-    suricata:
-      hosts:
-        10.99.10.90
+
+#suricata:
+#  children:
+#    suricata:
+#      hosts:
+#        10.99.10.90:
