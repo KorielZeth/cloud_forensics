@@ -1,7 +1,7 @@
 ---
 
 - hosts: all
-#  strategy: free
+# strategy: free
   tasks:
     - include_role:
         name: domain
@@ -18,7 +18,7 @@
 
 # Domain-join clients and run post-domain configuration in parallel
 - hosts: windows
-  strategy: free
+# strategy: free
   tasks:
     - include_role: 
         name: win10
