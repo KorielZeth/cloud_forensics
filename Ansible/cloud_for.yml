@@ -29,6 +29,6 @@
 
 
 # Run the agent on the Windows Hosts
-- hosts: windows
-  roles:
-    - wazuh_agent
+#- hosts: windows
+#  roles:
+#    - wazuh_agent
