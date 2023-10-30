@@ -16,9 +16,8 @@
         name: common
       when: "'win10' in group_names"
 
-# Domain-join clients and run post-domain configuration in parallel
+# Domain-join clients and run post-domain configuration
 - hosts: windows
-# strategy: free
   tasks:
     - include_role: 
         name: win10
@@ -28,7 +27,10 @@
       when: "'dc' in group_names"
 
 
-# Run the agent on the Windows Hosts
-#- hosts: windows
-#  roles:
-#    - wazuh_agent
+#Run the agent on the Windows Hosts
+
+- hosts: windows
+  tasks:
+    - include_role:
+        name: wazuh_agent
+      when: "'win10' in group_names"
